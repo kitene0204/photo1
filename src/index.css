@@ -1,0 +1,201 @@
+@import "tailwindcss";
+
+/* ❗ 배달의 민족 폰트 적용 ❗ */
+@font-face {
+    font-family: 'BMDOHYEON';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMDOHYEON.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'BMJUA';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'BMDOHYEON', system-ui, -apple-system, sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.font-dohyeon {
+    font-family: 'BMDOHYEON', system-ui, -apple-system, sans-serif;
+}
+
+.font-jua {
+    font-family: 'BMJUA', system-ui, -apple-system, sans-serif;
+}
+
+.font-sans-system {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* 입력창이나 버튼 안의 작은 글씨들은 가독성을 위해 시스템 기본 폰트 적용 */
+input, select, textarea, .text-sys {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* 🎨 파스텔 배경 및 둥둥 떠다니는 아이콘 애니메이션 */
+.pastel-bg {
+    background: linear-gradient(-45deg, #fdfbfb, #f3e5f5, #e0f7fa, #fff3e0);
+    background-size: 400% 400%;
+    animation: pastelGradient 15s ease infinite;
+}
+
+@keyframes pastelGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.floating-icon {
+    position: absolute;
+    animation: floatIcon 6s ease-in-out infinite;
+}
+
+@keyframes floatIcon {
+    0% { transform: translateY(0px) rotate(0deg) scale(1); }
+    33% { transform: translateY(-20px) rotate(15deg) scale(1.1); }
+    66% { transform: translateY(15px) rotate(-10deg) scale(0.9); }
+    100% { transform: translateY(0px) rotate(0deg) scale(1); }
+}
+
+/* 📸 액자 디자인 CSS 📸 */
+.slide-wrapper {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+    padding: 24px;
+    z-index: 10;
+}
+.slide-wrapper.active {
+    opacity: 1;
+    z-index: 20;
+}
+
+.slide-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    max-height: 100%;
+    transition: transform 5s ease-in-out;
+    will-change: transform;
+}
+
+/* 이미지/동영상 기본 */
+.slide-media {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+/* 1. 기본 (None) */
+.frame-none .slide-media {
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+}
+
+/* 2. 폴라로이드 감성 */
+.frame-polaroid {
+    background-color: #ffffff;
+    padding: 20px 20px 70px 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    max-width: 90vw;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.frame-polaroid .slide-media {
+    max-height: calc(88vh - 100px);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* 3. 클래식 원목 액자 */
+.frame-wood {
+    background-color: #fdfbf7;
+    padding: 24px;
+    border: 22px solid #5c4033;
+    border-image: linear-gradient(45deg, #3e2723, #8d6e63, #4e342e, #3e2723) 1;
+    box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.7), 0 25px 50px rgba(0, 0, 0, 0.6);
+    max-width: 92vw;
+    max-height: 88vh;
+}
+.frame-wood .slide-media {
+    max-height: calc(88vh - 90px);
+}
+
+/* 4. 영화 필름 스타일 */
+.frame-film {
+    background-color: #0b0b0f;
+    padding: 36px 16px;
+    background-image: 
+        repeating-linear-gradient(to right, transparent, transparent 14px, #ffffff 14px, #ffffff 26px),
+        repeating-linear-gradient(to right, transparent, transparent 14px, #ffffff 14px, #ffffff 26px);
+    background-position: top, bottom;
+    background-size: 100% 22px;
+    background-repeat: no-repeat;
+    max-width: 95vw;
+    max-height: 88vh;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.85);
+    border-radius: 4px;
+}
+.frame-film .slide-media {
+    border-top: 3px solid #333333;
+    border-bottom: 3px solid #333333;
+    max-height: calc(88vh - 80px);
+}
+
+/* 전환 효과 애니메이션 */
+.effect-fade {
+    transform: scale(1);
+}
+.slide-wrapper.active .effect-fade {
+    transform: scale(1.03);
+}
+
+.effect-zoom {
+    transform: scale(0.96);
+}
+.slide-wrapper.active .effect-zoom {
+    transform: scale(1.08);
+}
+
+.effect-pan-right {
+    transform: translateX(-3%) scale(1.03);
+}
+.slide-wrapper.active .effect-pan-right {
+    transform: translateX(2%) scale(1.04);
+}
+
+.effect-pan-left {
+    transform: translateX(3%) scale(1.03);
+}
+.slide-wrapper.active .effect-pan-left {
+    transform: translateX(-2%) scale(1.04);
+}
+
+/* 스크롤바 커스텀 */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}

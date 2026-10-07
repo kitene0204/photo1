@@ -1,0 +1,6 @@
+{
+  "name": "우리반 추억 사진관",
+  "description": "우리 아이들의 소중한 활동 사진과 동영상을 감성적인 액자와 음악과 함께 재생하는 슬라이드쇼 웹앱",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
